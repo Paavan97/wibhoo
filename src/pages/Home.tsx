@@ -4,7 +4,7 @@ import React from "react";
 const Home: React.FC = () => {
   return (
     <div>
-      <Button variant="contained">Click me</Button>
+      <Button variant="contained">Click Me</Button>
     </div>
   );
 };

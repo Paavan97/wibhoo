@@ -1,11 +1,12 @@
-import { Button } from "@mui/material";
 import React from "react";
+import IntroSection from "../views/home/IntroSection";
+import { Box } from "@mui/material";
 
 const Home: React.FC = () => {
   return (
-    <div>
-      <Button variant="contained">Click Here</Button>
-    </div>
+    <Box sx={{ width: '100%', maxWidth: 1200, margin: '0 auto' }}>
+    <IntroSection/>
+  </Box>
   );
 };
 

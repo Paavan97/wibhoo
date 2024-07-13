@@ -1,4 +1,4 @@
-import { Box, Grid, Paper, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import post1 from "../assets/place_post_crousele_1.png";
 import post2 from "../assets/place_post_crousel_2.png";
@@ -42,8 +42,7 @@ const PosterCrousel: React.FC = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrentPoster((currentPoster) => {
-        if(currentPoster===3)
-            return 0;
+        if (currentPoster === 3) return 0;
         return currentPoster + 1;
       });
     }, 2000);
@@ -70,61 +69,100 @@ const PosterCrousel: React.FC = () => {
         You will Find here
       </Typography>
 
-      <Box sx={{ display: "flex", flexDirection: {xs:'column-reverse', md:"row"} ,justifyContent:{ md:'space-around'}, alignItems:{xs:'center'}, gap:{xs:'20px'}, maxWidth:'1200px'}}>
-              <Box sx={{width:{xs:'90%', md:'45%'}}}>
-                <img style={{width:'100%'}} src={`${poster[currentPoster].image}`}></img>
-              </Box>
-              <Box sx={{width:{ xs:'90%', md:'35%'}}}>
-                <Box sx={{ display:'flex', flexDirection:'column', alignContent:'center', gap:'5px',paddingX:'8px', paddingY:'8px', borderRadius:'15px', backgroundColor:`${currentPoster===0? '#1C523A':''}`}}>
-
-                    <Typography variant="h5" >
-                     {poster[0].title}
-                    </Typography>
-                    {
-                        currentPoster===0 &&
-                        <Typography variant="body1" sx={{textAlign:'left'}}>
-                            {poster[0].description}
-                        </Typography>
-                    }
-                </Box>
-                <Box sx={{ display:'flex', flexDirection:'column', alignContent:'center', gap:'5px',paddingX:'8px', paddingY:'8px', borderRadius:'15px', backgroundColor:`${currentPoster===1? '#1C523A':''}`}}>
-
-                    <Typography variant="h5" >
-                     {poster[1].title}
-                    </Typography>
-                    {
-                        currentPoster===1 &&
-                        <Typography variant="body1" sx={{textAlign:'left'}}>
-                            {poster[1].description}
-                        </Typography>
-                    }
-                </Box>
-                <Box sx={{ display:'flex', flexDirection:'column', alignContent:'center', gap:'5px',paddingX:'8px', paddingY:'8px', borderRadius:'15px', backgroundColor:`${currentPoster===2? '#1C523A':''}`}}>
-
-                    <Typography variant="h5" >
-                     {poster[2].title}
-                    </Typography>
-                    {
-                        currentPoster===2 &&
-                        <Typography variant="body1" sx={{textAlign:'left'}}>
-                            {poster[2].description}
-                        </Typography>
-                    }
-                </Box>
-                <Box sx={{ display:'flex', flexDirection:'column', alignContent:'center', gap:'5px',paddingX:'8px', paddingY:'8px', borderRadius:'15px', backgroundColor:`${currentPoster===3? '#1C523A':''}`}}>
-
-                    <Typography variant="h5" >
-                     {poster[3].title}
-                    </Typography>
-                    {
-                        currentPoster===3 &&
-                        <Typography variant="body1" sx={{textAlign:'left'}}>
-                            {poster[3].description}
-                        </Typography>
-                    }
-                </Box>
-                
-              </Box>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: { xs: "column-reverse", md: "row" },
+          justifyContent: { md: "space-around" },
+          alignItems: { xs: "center" },
+          gap: { xs: "20px" },
+          maxWidth: "1200px",
+        }}
+      >
+        <Box sx={{ width: { xs: "90%", md: "45%" } }}>
+          <img
+            style={{ width: "100%" }}
+            src={`${poster[currentPoster].image}`}
+          ></img>
+        </Box>
+        <Box sx={{ width: { xs: "90%", md: "35%" } }}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignContent: "center",
+              gap: "5px",
+              paddingX: "8px",
+              paddingY: "8px",
+              borderRadius: "15px",
+              backgroundColor: `${currentPoster === 0 ? "#1C523A" : ""}`,
+            }}
+          >
+            <Typography variant="h5">{poster[0].title}</Typography>
+            {currentPoster === 0 && (
+              <Typography variant="body1" sx={{ textAlign: "left" }}>
+                {poster[0].description}
+              </Typography>
+            )}
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignContent: "center",
+              gap: "5px",
+              paddingX: "8px",
+              paddingY: "8px",
+              borderRadius: "15px",
+              backgroundColor: `${currentPoster === 1 ? "#1C523A" : ""}`,
+            }}
+          >
+            <Typography variant="h5">{poster[1].title}</Typography>
+            {currentPoster === 1 && (
+              <Typography variant="body1" sx={{ textAlign: "left" }}>
+                {poster[1].description}
+              </Typography>
+            )}
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignContent: "center",
+              gap: "5px",
+              paddingX: "8px",
+              paddingY: "8px",
+              borderRadius: "15px",
+              backgroundColor: `${currentPoster === 2 ? "#1C523A" : ""}`,
+            }}
+          >
+            <Typography variant="h5">{poster[2].title}</Typography>
+            {currentPoster === 2 && (
+              <Typography variant="body1" sx={{ textAlign: "left" }}>
+                {poster[2].description}
+              </Typography>
+            )}
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              alignContent: "center",
+              gap: "5px",
+              paddingX: "8px",
+              paddingY: "8px",
+              borderRadius: "15px",
+              backgroundColor: `${currentPoster === 3 ? "#1C523A" : ""}`,
+            }}
+          >
+            <Typography variant="h5">{poster[3].title}</Typography>
+            {currentPoster === 3 && (
+              <Typography variant="body1" sx={{ textAlign: "left" }}>
+                {poster[3].description}
+              </Typography>
+            )}
+          </Box>
+        </Box>
       </Box>
     </Box>
   );

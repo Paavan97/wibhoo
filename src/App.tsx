@@ -15,9 +15,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<NavbarLayout />}>
-            <Route path="/home" element={<Home />} />
+            <Route path="" element={<Home />} />
             <Route path="communities" element={<Communities />} />
-            <Route path="places" element={<Places />} />
+            <Route path="places-spaces" element={<Places />} />
             <Route path="what-is-wibhoo" element={<WhatIsWibhoo />} />
             <Route path="our-approach" element={<OurApproach />} />
           </Route>

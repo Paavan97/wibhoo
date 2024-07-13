@@ -69,7 +69,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Navbar: React.FC = () => {
-  const isMobile = useMediaQuery("(max-width:900px)");
   const isTablet = useMediaQuery("(max-width:1113px)");
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);

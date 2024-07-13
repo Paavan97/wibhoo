@@ -74,6 +74,8 @@ const Navbar: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
+  const [shopAnchorEl, setShopAnchorEl] = useState<null | HTMLElement>(null);
+  const [useAnchorEl, setUseAnchorEl] = useState<null | HTMLElement>(null);
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -91,21 +93,46 @@ const Navbar: React.FC = () => {
     setShowSearch(!showSearch);
   };
 
-  const handleMenuClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleMenuClick = (
+    event: React.MouseEvent<HTMLElement>,
+    setAnchorEl: React.Dispatch<React.SetStateAction<HTMLElement | null>>
+  ) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleMenuClose = () => {
+  const handleMenuClose = (
+    setAnchorEl: React.Dispatch<React.SetStateAction<HTMLElement | null>>
+  ) => {
     setAnchorEl(null);
   };
 
   const menuItems = [
-    "Home",
-    "Shop",
-    "Use",
-    "Places",
-    "Communities",
-    "Our Story",
+    { text: "Home", path: "home" },
+    {
+      text: "Shop",
+      subMenu: [
+        { text: "Shop1", path: "shop1" },
+        { text: "Shop2", path: "shop2" },
+        { text: "Shop3", path: "shop3" },
+      ],
+    },
+    {
+      text: "Use",
+      subMenu: [
+        { text: "Use1", path: "use1" },
+        { text: "Use2", path: "use2" },
+        { text: "Use3", path: "use3" },
+      ],
+    },
+    { text: "Places", path: "places-spaces" },
+    { text: "Communities", path: "communities" },
+    {
+      text: "Our Story",
+      subMenu: [
+        { text: "What Is Wibhoo", path: "what-is-wibhoo" },
+        { text: "How We Onboard", path: "how-we-onboard" },
+      ],
+    },
   ];
 
   return (
@@ -152,40 +179,82 @@ const Navbar: React.FC = () => {
                             },
                           }}
                         >
-                          <Button className="header-common-ui">Home</Button>
-                          <Button className="header-common-ui">
-                            Shop <KeyboardArrowDown />
-                          </Button>
-                          <Button className="header-common-ui">
-                            Use <KeyboardArrowDown />{" "}
-                          </Button>
-                          <Button className="header-common-ui">Places</Button>
-                          <Button className="header-common-ui">
-                            Communities
-                          </Button>
-                          <Button
-                            className="header-common-ui"
-                            onClick={handleMenuClick}
-                          >
-                            Our Story <KeyboardArrowDown />{" "}
-                          </Button>
-                          <Menu
-                            anchorEl={anchorEl}
-                            open={Boolean(anchorEl)}
-                            onClose={handleMenuClose}
-                          >
-                            <MenuItem onClick={handleMenuClose}>
-                              <Link
-                                to="/what-is-wibhoo"
-                                style={{ textDecoration: "none" }}
+                          {menuItems.map((item) => (
+                            <Box key={item.text}>
+                              <Button
+                                className="header-common-ui"
+                                component={Link}
+                                to={item.path || "#"}
+                                onClick={
+                                  item.subMenu
+                                    ? (e) =>
+                                        handleMenuClick(
+                                          e,
+                                          item.text === "Shop"
+                                            ? setShopAnchorEl
+                                            : item.text === "Use"
+                                            ? setUseAnchorEl
+                                            : setAnchorEl
+                                        )
+                                    : undefined
+                                }
                               >
-                                What Is Wibhoo
-                              </Link>
-                            </MenuItem>
-                            <MenuItem onClick={handleMenuClose}>
-                              How We Onboard
-                            </MenuItem>
-                          </Menu>
+                                {item.text}{" "}
+                                {item.subMenu && <KeyboardArrowDown />}
+                              </Button>
+                              {item.subMenu && (
+                                <Menu
+                                  anchorEl={
+                                    item.text === "Shop"
+                                      ? shopAnchorEl
+                                      : item.text === "Use"
+                                      ? useAnchorEl
+                                      : anchorEl
+                                  }
+                                  open={Boolean(
+                                    item.text === "Shop"
+                                      ? shopAnchorEl
+                                      : item.text === "Use"
+                                      ? useAnchorEl
+                                      : anchorEl
+                                  )}
+                                  onClose={() =>
+                                    handleMenuClose(
+                                      item.text === "Shop"
+                                        ? setShopAnchorEl
+                                        : item.text === "Use"
+                                        ? setUseAnchorEl
+                                        : setAnchorEl
+                                    )
+                                  }
+                                >
+                                  {item.subMenu.map((subItem) => (
+                                    <MenuItem
+                                      component={Link}
+                                      to={subItem.path || "#"}
+                                      key={subItem.text}
+                                      onClick={() =>
+                                        handleMenuClose(
+                                          item.text === "Shop"
+                                            ? setShopAnchorEl
+                                            : item.text === "Use"
+                                            ? setUseAnchorEl
+                                            : setAnchorEl
+                                        )
+                                      }
+                                    >
+                                      <Link
+                                        to={`/${subItem.path}`}
+                                        style={{ textDecoration: "none" }}
+                                      >
+                                        {subItem.text}
+                                      </Link>
+                                    </MenuItem>
+                                  ))}
+                                </Menu>
+                              )}
+                            </Box>
+                          ))}
                         </Box>
                       </Box>
                     </Box>
@@ -194,21 +263,20 @@ const Navbar: React.FC = () => {
                   <Box
                     sx={{
                       display: "flex",
-                      justifyContent: "center",
-                      gap: isMobile ? "10px" : "30px",
+                      justifyContent: "space-around",
+                      alignItems: "center",
                     }}
                   >
-                    <Box sx={{ width: "250px", marginTop: "20px" }}>
-                      <Search>
-                        <SearchIconWrapper>
-                          <SearchIcon />
-                        </SearchIconWrapper>
-                        <StyledInputBase
-                          placeholder="Search…"
-                          inputProps={{ "aria-label": "search" }}
-                        />
-                      </Search>
-                    </Box>
+                    <Search sx={{ display: "flex" }}>
+                      <SearchIconWrapper>
+                        <SearchIcon />
+                      </SearchIconWrapper>
+                      <StyledInputBase
+                        placeholder="Search…"
+                        inputProps={{ "aria-label": "search" }}
+                      />
+                    </Search>
+
                     <ListItemButton>
                       <ListItemAvatar>
                         <Avatar
@@ -284,16 +352,27 @@ const Navbar: React.FC = () => {
           onKeyDown={toggleDrawer(false)}
         >
           <List>
-            {menuItems.map((text, index) => (
-              <ListItem
-                button
-                key={index}
-                sx={{
-                  textAlign: "center",
-                }}
-              >
-                <ListItemText primary={text} />
-              </ListItem>
+            {menuItems.map((item) => (
+              <React.Fragment key={item.text}>
+                <ListItem button component={Link} to={item.path || "#"}>
+                  <ListItemText primary={item.text} />
+                </ListItem>
+                {item.subMenu && (
+                  <List component="div" disablePadding>
+                    {item.subMenu.map((subItem) => (
+                      <ListItem
+                        key={subItem.text}
+                        button
+                        component={Link}
+                        to={`/${subItem.path}`}
+                        sx={{ pl: 4 }}
+                      >
+                        <ListItemText primary={subItem.text} />
+                      </ListItem>
+                    ))}
+                  </List>
+                )}
+              </React.Fragment>
             ))}
           </List>
           {showSearch && (

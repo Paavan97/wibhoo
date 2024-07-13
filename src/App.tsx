@@ -1,7 +1,7 @@
 // import "./App.css";
 
 // import { Home } from "@mui/icons-material";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
 import NavbarLayout from "./routes/NavbarLayout";
 import Communities from "./pages/Communities";
@@ -15,6 +15,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<NavbarLayout />}>
+            <Route index element={<Navigate to="/home" />} />
             <Route path="home" element={<Home />} />
             <Route path="communities" element={<Communities />} />
             <Route path="places-spaces" element={<Places />} />

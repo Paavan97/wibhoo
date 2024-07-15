@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { KeyboardArrowDown } from "@mui/icons-material";
+import { KeyboardArrowDown, ExpandLess, ExpandMore } from "@mui/icons-material";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import wibhooIcon from "../assets/wibhoo_logo.png";
@@ -22,6 +22,7 @@ import {
   Avatar,
   Menu,
   MenuItem,
+  Collapse,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
@@ -71,10 +72,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const Navbar: React.FC = () => {
   const isTablet = useMediaQuery("(max-width:1113px)");
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [showSearch, setShowSearch] = useState(false);
+  const [searchBarOpen, setSearchBarOpen] = useState(false); // State for search bar visibility
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [shopAnchorEl, setShopAnchorEl] = useState<null | HTMLElement>(null);
   const [useAnchorEl, setUseAnchorEl] = useState<null | HTMLElement>(null);
+  const [openSubmenu, setOpenSubmenu] = useState<{ [key: string]: boolean }>(
+    {}
+  );
 
   const toggleDrawer =
     (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
@@ -89,7 +93,7 @@ const Navbar: React.FC = () => {
     };
 
   const handleSearchIconClick = () => {
-    setShowSearch(!showSearch);
+    setSearchBarOpen((prev) => !prev);
   };
 
   const handleMenuClick = (
@@ -105,29 +109,40 @@ const Navbar: React.FC = () => {
     setAnchorEl(null);
   };
 
+  const handleSubmenuToggle = (
+    menu: string,
+    event: React.MouseEvent<HTMLElement>
+  ) => {
+    event.stopPropagation();
+    setOpenSubmenu((prevOpenSubmenu) => ({
+      ...prevOpenSubmenu,
+      [menu]: !prevOpenSubmenu[menu],
+    }));
+  };
+
   const menuItems = [
     { text: "Home", path: "home" },
     {
       text: "Shop",
       subMenu: [
-        { text: "Home & Living", path: "home" },
-        { text: "Fashion & Clothing", path: "home" },
-        { text: "Beauty & Care", path: "home" },
-        { text: "Eat & Drink", path: "home" },
-        { text: "Lifestyle Essentials", path: "home" },
+        { text: "Home & Living", path: "products/home-living" },
+        { text: "Fashion & Clothing", path: "products/fashion-clothing" },
+        { text: "Beauty & Care", path: "products/beauty-care" },
+        { text: "Eat & Drink", path: "products/eat-drink" },
+        { text: "Lifestyle Essentials", path: "products/lifestyle-essentials" },
       ],
     },
     {
       text: "Use",
       subMenu: [
-        { text: "Wellbeing & Care", path: "home" },
-        { text: "Eco-Tourism", path: "home" },
-        { text: "Waste Management", path: "home" },
-        { text: "Home & Garden", path: "home" },
-        { text: "Event Planning", path: "home" },
-        { text: "Building & Architecture", path: "home" },
-        { text: "Transport & Logistic", path: "home" },
-        { text: "Green Energy & Audits", path: "home" },
+        { text: "Wellbeing & Care", path: "use/wellbeing-care" },
+        { text: "Eco-Tourism", path: "use/eco-tourism" },
+        { text: "Waste Management", path: "use/waste-management" },
+        { text: "Home & Garden", path: "use/home-garden" },
+        { text: "Event Planning", path: "use/event-planning" },
+        { text: "Building & Architecture", path: "use/building-architecture" },
+        { text: "Transport & Logistic", path: "use/transport-logistic" },
+        { text: "Green Energy & Audits", path: "use/green-energy-audits" },
       ],
     },
     { text: "Places", path: "places-spaces" },
@@ -210,6 +225,10 @@ const Navbar: React.FC = () => {
                               </Button>
                               {item.subMenu && (
                                 <Menu
+                                  sx={{
+                                    paddingTop: "0px",
+                                    paddingBottom: "0px",
+                                  }}
                                   anchorEl={
                                     item.text === "Shop"
                                       ? shopAnchorEl
@@ -236,6 +255,9 @@ const Navbar: React.FC = () => {
                                 >
                                   {item.subMenu.map((subItem) => (
                                     <MenuItem
+                                      sx={{
+                                        background: "#111917",
+                                      }}
                                       component={Link}
                                       to={subItem.path || "#"}
                                       key={subItem.text}
@@ -251,7 +273,17 @@ const Navbar: React.FC = () => {
                                     >
                                       <Link
                                         to={`/${subItem.path}`}
-                                        style={{ textDecoration: "none" }}
+                                        style={{
+                                          textDecoration: "none",
+                                          color: "#fff",
+                                        }}
+                                        onMouseEnter={(e) =>
+                                          (e.currentTarget.style.color =
+                                            "#9cf5b8")
+                                        }
+                                        onMouseLeave={(e) =>
+                                          (e.currentTarget.style.color = "#fff")
+                                        }
                                       >
                                         {subItem.text}
                                       </Link>
@@ -315,11 +347,14 @@ const Navbar: React.FC = () => {
                       </ListItemButton>
                     </Box>
 
-                    <Box
-                      sx={{ marginTop: "25px", marginLeft: "-14px" }}
-                      onClick={handleSearchIconClick}
-                    >
-                      <SearchIcon fontSize="large" />
+                    <Box sx={{ marginTop: "17px", marginLeft: "-14px" }}>
+                      <IconButton
+                        color="inherit"
+                        aria-label="search"
+                        onClick={handleSearchIconClick}
+                      >
+                        <SearchIcon fontSize="large" />
+                      </IconButton>
                     </Box>
                   </Box>
                   <Box>
@@ -350,52 +385,102 @@ const Navbar: React.FC = () => {
         </Box>
       </Box>
 
-      <Drawer anchor="right" open={drawerOpen} onClose={toggleDrawer(false)}>
+      <Drawer
+        anchor="right"
+        open={drawerOpen}
+        onClose={toggleDrawer(false)}
+        sx={{
+          "& .MuiDrawer-paper": { backgroundColor: "#111917", color: "white" },
+        }} // Set drawer background color
+      >
         <Box
           sx={{ width: 250 }}
           role="presentation"
           onClick={toggleDrawer(false)}
           onKeyDown={toggleDrawer(false)}
         >
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              marginBottom: "20px",
+            }}
+          >
+            <Typography variant="h6" noWrap component="div">
+              <img src={wibhooIcon} alt="Wibhoo Logo" style={{ height: 70 }} />
+            </Typography>
+          </Box>
           <List>
             {menuItems.map((item) => (
               <React.Fragment key={item.text}>
-                <ListItem button component={Link} to={item.path || "#"}>
+                <ListItem
+                  button
+                  component={Link}
+                  to={item.path || "#"}
+                  onClick={(event) =>
+                    item.subMenu
+                      ? handleSubmenuToggle(item.text, event)
+                      : undefined
+                  }
+                >
                   <ListItemText primary={item.text} />
+                  {item.subMenu ? (
+                    openSubmenu[item.text] ? (
+                      <ExpandLess />
+                    ) : (
+                      <ExpandMore />
+                    )
+                  ) : null}
                 </ListItem>
                 {item.subMenu && (
-                  <List component="div" disablePadding>
-                    {item.subMenu.map((subItem) => (
-                      <ListItem
-                        key={subItem.text}
-                        button
-                        component={Link}
-                        to={`/${subItem.path}`}
-                        sx={{ pl: 4 }}
-                      >
-                        <ListItemText primary={subItem.text} />
-                      </ListItem>
-                    ))}
-                  </List>
+                  <Collapse
+                    in={openSubmenu[item.text]}
+                    timeout="auto"
+                    unmountOnExit
+                  >
+                    <List component="div" disablePadding>
+                      {item.subMenu.map((subItem) => (
+                        <ListItem
+                          key={subItem.text}
+                          button
+                          component={Link}
+                          to={`/${subItem.path}`}
+                          sx={{ pl: 4 }}
+                        >
+                          <ListItemText primary={subItem.text} />
+                        </ListItem>
+                      ))}
+                    </List>
+                  </Collapse>
                 )}
               </React.Fragment>
             ))}
           </List>
-          {showSearch && (
-            <Box sx={{ width: "100%", padding: "10px" }}>
-              <Search>
-                <SearchIconWrapper>
-                  <SearchIcon />
-                </SearchIconWrapper>
-                <StyledInputBase
-                  placeholder="Search…"
-                  inputProps={{ "aria-label": "search" }}
-                />
-              </Search>
-            </Box>
-          )}
         </Box>
       </Drawer>
+
+      {searchBarOpen && (
+        <Box
+          sx={{
+            position: "sticky",
+            top: 0,
+            zIndex: 1000,
+            backgroundColor: "#fff",
+            boxShadow: "0px 4px 6px rgba(0, 0, 0, 0.1)",
+            padding: "10px",
+          }}
+        >
+          <Search sx={{ display: "flex" }}>
+            <SearchIconWrapper>
+              <SearchIcon />
+            </SearchIconWrapper>
+            <StyledInputBase
+              placeholder="Search…"
+              inputProps={{ "aria-label": "search" }}
+            />
+          </Search>
+        </Box>
+      )}
     </Box>
   );
 };

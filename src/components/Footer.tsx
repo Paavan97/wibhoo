@@ -1,5 +1,4 @@
 import { Box, Link } from "@mui/material";
-import React from "react";
 import wibhooIcon from "../assets/wibhoo_logo.png";
 
 const Footer = () => {

@@ -82,6 +82,7 @@ const IntroSection: React.FC = () => {
               color: "white",
               fontSize: { xs: "1.5em", md: "2em" },
               margin: "0px",
+              textAlign: { xs: "center", md: "left" },
             }}
           >
             Embrace the lifestyle you admire

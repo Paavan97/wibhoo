@@ -8,6 +8,8 @@ import Communities from "./pages/Communities";
 import Places from "./pages/Places";
 import WhatIsWibhoo from "./pages/WhatIsWibhoo";
 import OurApproach from "./pages/OurApproach";
+import ProductPage from "./pages/ProductPage";
+import UsePage from "./pages/UsePage";
 
 function App() {
   return (
@@ -17,17 +19,12 @@ function App() {
           <Route path="/" element={<NavbarLayout />}>
             <Route index element={<Navigate to="/home" />} />
             <Route path="home" element={<Home />} />
+            <Route path="/products/:category" element={<ProductPage />} />
+            <Route path="/use/:category" element={<UsePage />} />
             <Route path="communities" element={<Communities />} />
             <Route path="places-spaces" element={<Places />} />
             <Route path="what-is-wibhoo" element={<WhatIsWibhoo />} />
             <Route path="our-approach" element={<OurApproach />} />
-            {/* Additional Routes for SubMenu Items */}
-            <Route path="shop1" element={<WhatIsWibhoo />} />
-            <Route path="shop2" element={<Places />} />
-            <Route path="shop3" element={<WhatIsWibhoo />} />
-            <Route path="use1" element={<Places />} />
-            <Route path="use2" element={<WhatIsWibhoo />} />
-            <Route path="use3" element={<Places />} />
           </Route>
         </Routes>
       </BrowserRouter>

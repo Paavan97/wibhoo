@@ -7,9 +7,9 @@ import NavbarLayout from "./routes/NavbarLayout";
 import Communities from "./pages/Communities";
 import Places from "./pages/Places";
 import WhatIsWibhoo from "./pages/WhatIsWibhoo";
-import OurApproach from "./pages/OurApproach";
 import ProductPage from "./pages/ProductPage";
 import UsePage from "./pages/UsePage";
+import HowWeOnboard from "./pages/HowWeOnboard";
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
             <Route path="communities" element={<Communities />} />
             <Route path="places-spaces" element={<Places />} />
             <Route path="what-is-wibhoo" element={<WhatIsWibhoo />} />
-            <Route path="our-approach" element={<OurApproach />} />
+            <Route path="how-we-onboard" element={<HowWeOnboard />} />
           </Route>
         </Routes>
       </BrowserRouter>

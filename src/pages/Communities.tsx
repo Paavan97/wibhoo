@@ -1,4 +1,4 @@
-import { Box, InputBase } from "@mui/material";
+import { Box, Divider, InputBase } from "@mui/material";
 import React from "react";
 import SearchIcon from "@mui/icons-material/Search";
 
@@ -251,6 +251,108 @@ const Communities: React.FC = () => {
           No results found, try adjusting your search and filters.
         </Box>
       </Box>
+      <Divider
+        sx={{ height: "1px", backgroundColor: "#9cf5b8" }}
+        variant="fullWidth"
+      />
+      <Box
+        sx={{
+          marginTop: "30px",
+          marginBottom: "50px",
+          textAlign: "center",
+          display: "flex",
+          flexDirection: "column",
+          gap: "30px",
+        }}
+      >
+        <Box sx={{ fontSize: "2em", color: "#9cf5b8" }}>
+          Projection for a Better Community
+        </Box>
+        <Box sx={{ fontSize: "16px", color: "white" }}>
+          In a year, Wibhoo will potentially execute the following initiatives
+        </Box>
+        <Box
+          sx={{
+            display: "flex",
+            gap: "30px",
+            flexWrap: "wrap",
+            marginTop: "50px",
+          }}
+        >
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "15px",
+              width: { md: "22%", sm: "46%", xs: "90%" },
+            }}
+          >
+            <Box sx={{ color: "#9cf5b8", fontSize: "3em" }}>50+</Box>
+            <Box sx={{ color: "white", fontSize: "18px", fontWeight: "700" }}>
+              Onboarding of Events & Communities
+            </Box>
+            <Box sx={{ color: "white" }}>
+              Wibhoo aims to bring together diverse communities and vibrant
+              events, fostering connections and collaboration.
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "15px",
+              width: { md: "22%", sm: "46%", xs: "90%" },
+            }}
+          >
+            <Box sx={{ color: "#9cf5b8", fontSize: "3em" }}>10+</Box>
+            <Box sx={{ color: "white", fontSize: "18px", fontWeight: "700" }}>
+              Events in Collaboration
+            </Box>
+            <Box sx={{ color: "white" }}>
+              Through strategic partnerships, Wibhoo will host enriching events
+              that promote sustainability, creativity, and social impact.
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "15px",
+              width: { md: "22%", sm: "46%", xs: "90%" },
+            }}
+          >
+            <Box sx={{ color: "#9cf5b8", fontSize: "3em" }}>10+</Box>
+            <Box sx={{ color: "white", fontSize: "18px", fontWeight: "700" }}>
+              Volunteer Programs
+            </Box>
+            <Box sx={{ color: "white" }}>
+              Wibhoo will organize volunteer programs focused on environmental
+              conservation, social welfare, and community development.
+            </Box>
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              gap: "15px",
+              width: { md: "22%", sm: "46%", xs: "90%" },
+            }}
+          >
+            <Box sx={{ color: "#9cf5b8", fontSize: "3em" }}>20+</Box>
+            <Box sx={{ color: "white", fontSize: "18px", fontWeight: "700" }}>
+              Workshops in Collaboration
+            </Box>
+            <Box sx={{ color: "white" }}>
+              Join hands with experts and thought leaders to conduct workshops
+              on sustainable living, wellness, art, and personal development.
+            </Box>
+          </Box>
+        </Box>
+      </Box>
+      <Divider
+        sx={{ height: "1px", backgroundColor: "#9cf5b8" }}
+        variant="fullWidth"
+      />
     </Box>
   );
 };

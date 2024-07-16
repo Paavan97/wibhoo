@@ -4,15 +4,20 @@ import TimelineItem from "@mui/lab/TimelineItem";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
-// import TimelineDot from '@mui/lab/TimelineDot';
 import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
 import { Box, Typography } from "@mui/material";
 
 const OutlinedTimeline: React.FC = () => {
   return (
     <Timeline position="alternate">
-      <TimelineItem sx={{m:'auto', alignItem:"center" , display:'flex', flexDirection:{xs:'row-reverse', md:'row'}}}>
-        
+      <TimelineItem
+        sx={{
+          m: "auto",
+          alignItem: "center",
+          display: "flex",
+          flexDirection: { xs: "row-reverse", md: "row" },
+        }}
+      >
         <TimelineContent sx={{ marginTop: "40px" }}>
           <Box>
             <Typography
@@ -51,7 +56,7 @@ const OutlinedTimeline: React.FC = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              color: "gold"
+              color: "gold",
             }}
           >
             1
@@ -61,7 +66,7 @@ const OutlinedTimeline: React.FC = () => {
 
         <TimelineOppositeContent
           sx={{
-            display: {xs:"none",md:"flex"},
+            display: { xs: "none", md: "flex" },
             marginTop: "40px",
             justifyContent: "center",
             alignItems: "center",
@@ -75,7 +80,14 @@ const OutlinedTimeline: React.FC = () => {
 
       <TimelineItem>
         <TimelineOppositeContent color="text.secondary">
-          <Box sx={{display:'flex', flexDirection:'column', justifyContent:'left', color:'white'}}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "left",
+              color: "white",
+            }}
+          >
             <Typography
               sx={{
                 fontSize: "24px",
@@ -111,25 +123,33 @@ const OutlinedTimeline: React.FC = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              color: "gold"
+              color: "gold",
             }}
           >
             2
           </Box>
-          <TimelineConnector sx={{ backgroundColor: "gold" }}  />
+          <TimelineConnector sx={{ backgroundColor: "gold" }} />
         </TimelineSeparator>
-        <TimelineContent  sx={{
-            display: {xs:"none",md:"flex"},
+        <TimelineContent
+          sx={{
+            display: { xs: "none", md: "flex" },
             marginTop: "40px",
             justifyContent: "center",
             alignItems: "center",
             alignItem: "center",
-          }}></TimelineContent>
+          }}
+        ></TimelineContent>
       </TimelineItem>
 
-      <TimelineItem sx={{ alignItem: "" , display:'flex', flexDirection:{xs:'row-reverse', md:'row'}}} >
+      <TimelineItem
+        sx={{
+          alignItem: "",
+          display: "flex",
+          flexDirection: { xs: "row-reverse", md: "row" },
+        }}
+      >
         <TimelineOppositeContent color="text.secondary">
-          <Box sx={{color:'white', textAlign:'left'}} >
+          <Box sx={{ color: "white", textAlign: "left" }}>
             <Typography
               sx={{
                 fontSize: "24px",
@@ -165,20 +185,22 @@ const OutlinedTimeline: React.FC = () => {
               display: "flex",
               justifyContent: "center",
               alignItems: "center",
-              color: "gold"
+              color: "gold",
             }}
           >
             3
           </Box>
-          <TimelineConnector sx={{ backgroundColor: "gold" }}  />
+          <TimelineConnector sx={{ backgroundColor: "gold" }} />
         </TimelineSeparator>
-        <TimelineContent  sx={{
-            display: {xs:"none",md:"flex"},
+        <TimelineContent
+          sx={{
+            display: { xs: "none", md: "flex" },
             marginTop: "40px",
             justifyContent: "center",
             alignItems: "center",
             alignItem: "center",
-          }}></TimelineContent>
+          }}
+        ></TimelineContent>
       </TimelineItem>
     </Timeline>
   );

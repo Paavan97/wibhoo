@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, useMediaQuery, useTheme } from "@mui/material";
 import Timeline from "@mui/lab/Timeline";
 import TimelineItem, { timelineItemClasses } from "@mui/lab/TimelineItem";
 import TimelineSeparator from "@mui/lab/TimelineSeparator";
@@ -7,6 +7,9 @@ import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
 
 const HowWeOnboard = () => {
+  const theme = useTheme();
+  const isMd = useMediaQuery(theme.breakpoints.up("md"));
+
   return (
     <Box sx={{ marginTop: "40px" }}>
       <Box sx={{ display: "flex", flexDirection: "column", gap: "20px" }}>
@@ -157,7 +160,7 @@ const HowWeOnboard = () => {
         </Box>
         <Box sx={{ marginTop: "50px" }}>
           <Timeline
-            position="alternate"
+            position={isMd ? "alternate" : "right"}
             sx={{
               [`& .${timelineItemClasses.root}:before`]: {
                 flex: 0,
@@ -169,16 +172,16 @@ const HowWeOnboard = () => {
               <TimelineOppositeContent
                 sx={{
                   margin: "50px 0px",
-                  display: "flex",
+                  // display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  display: { md: "flex", xs: "none" },
                 }}
               >
                 <Box
                   component="img"
                   sx={{
                     width: "70%",
-                    display: { md: "block", xs: "none" },
                   }}
                   src="https://assets.softr-files.com/applications/c0ac6f53-6da2-478a-aad1-cae10656e61a/assets/09d34d66-da21-4e2b-a01f-7cbd7cc8cef6.svg"
                 />
@@ -268,16 +271,16 @@ const HowWeOnboard = () => {
               <TimelineOppositeContent
                 sx={{
                   margin: "50px 0px",
-                  display: "flex",
+                  // display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  display: { md: "flex", xs: "none" },
                 }}
               >
                 <Box
                   component="img"
                   sx={{
                     width: "70%",
-                    display: { md: "block", xs: "none" },
                   }}
                   src="https://assets.softr-files.com/applications/c0ac6f53-6da2-478a-aad1-cae10656e61a/assets/70c389a1-5cd7-4ca9-9b49-3ad82e85d233.svg"
                 />
@@ -349,16 +352,16 @@ const HowWeOnboard = () => {
               <TimelineOppositeContent
                 sx={{
                   margin: "50px 0px",
-                  display: "flex",
+                  // display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  display: { md: "flex", xs: "none" },
                 }}
               >
                 <Box
                   component="img"
                   sx={{
                     width: "70%",
-                    display: { md: "block", xs: "none" },
                   }}
                   src="https://assets.softr-files.com/applications/c0ac6f53-6da2-478a-aad1-cae10656e61a/assets/7d091a32-a977-4ea8-aa8e-76ec010c7bdc.svg"
                 />
@@ -437,16 +440,16 @@ const HowWeOnboard = () => {
               <TimelineOppositeContent
                 sx={{
                   margin: "50px 0px",
-                  display: "flex",
+                  // display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  display: { md: "flex", xs: "none" },
                 }}
               >
                 <Box
                   component="img"
                   sx={{
                     width: "70%",
-                    display: { md: "block", xs: "none" },
                   }}
                   src="https://assets.softr-files.com/applications/c0ac6f53-6da2-478a-aad1-cae10656e61a/assets/0ca4732e-80ba-404d-9f39-5c7d62ce63c0.svg"
                 />
@@ -524,16 +527,16 @@ const HowWeOnboard = () => {
               <TimelineOppositeContent
                 sx={{
                   margin: "50px 0px",
-                  display: "flex",
+                  // display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
+                  display: { md: "flex", xs: "none" },
                 }}
               >
                 <Box
                   component="img"
                   sx={{
                     width: "70%",
-                    display: { md: "block", xs: "none" },
                   }}
                   src="https://assets.softr-files.com/applications/c0ac6f53-6da2-478a-aad1-cae10656e61a/assets/0d4ccaec-7004-4237-9edd-cdeafbc572cf.svg"
                 />

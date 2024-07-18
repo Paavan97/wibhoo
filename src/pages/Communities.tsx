@@ -1,8 +1,11 @@
 import { Box, Divider, InputBase } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 
 const Communities: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Box
       sx={{

@@ -5,8 +5,12 @@ import DoneIcon from "@mui/icons-material/Done";
 import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
 import HandshakeIcon from "@mui/icons-material/Handshake";
 import FingerprintIcon from "@mui/icons-material/Fingerprint";
+import { useEffect } from "react";
 
 const Service: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Box

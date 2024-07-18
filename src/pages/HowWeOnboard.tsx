@@ -5,10 +5,14 @@ import TimelineSeparator from "@mui/lab/TimelineSeparator";
 import TimelineConnector from "@mui/lab/TimelineConnector";
 import TimelineContent from "@mui/lab/TimelineContent";
 import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
+import { useEffect } from "react";
 
 const HowWeOnboard = () => {
   const theme = useTheme();
   const isMd = useMediaQuery(theme.breakpoints.up("md"));
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <Box sx={{ marginTop: "40px" }}>

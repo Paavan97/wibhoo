@@ -21,3 +21,14 @@ body {
   /* background-color: #111917; */
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
+
+.FooterPagesHover {
+  text-decoration: none;
+  color: white; /* Ensure the color matches your inline style */
+  font-size: 14px; /* Ensure the font size matches your inline style */
+}
+
+.FooterPagesHover:hover {
+  text-decoration: underline;
+  color: black;
+}

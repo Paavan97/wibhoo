@@ -1,7 +1,11 @@
 import { Box, Typography, useMediaQuery } from "@mui/material";
+import { useEffect } from "react";
 
 export default function Terms() {
   const isTablet = useMediaQuery("(max-width:1113px)");
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Box
       sx={{

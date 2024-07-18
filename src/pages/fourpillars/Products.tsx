@@ -5,8 +5,12 @@ import VolunteerActivismIcon from "@mui/icons-material/VolunteerActivism";
 import HandshakeIcon from "@mui/icons-material/Handshake";
 import FingerprintIcon from "@mui/icons-material/Fingerprint";
 import ProductCategories from "../../views/ProductsFooter/Productcategories";
+import { useEffect } from "react";
 
 const Product: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <Box

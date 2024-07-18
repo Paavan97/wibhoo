@@ -8,11 +8,15 @@ import {
 } from "@mui/material";
 import usedata from "../data/useData.json"; // Adjust the path as needed
 import SearchIcon from "@mui/icons-material/Search";
+import { useEffect } from "react";
 
 const UsePage = () => {
   const { category } = useParams();
   const tags = ["Art", "Food", "Other", "Studio"];
   const isTablet = useMediaQuery("(max-width:1113px)");
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const selectedCategory = usedata.find((cat) => cat.path === category);
 

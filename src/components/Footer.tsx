@@ -1,5 +1,6 @@
-import { Box, Link } from "@mui/material";
+import { Box } from "@mui/material";
 import wibhooIcon from "../assets/wibhoo_logo.png";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -89,22 +90,42 @@ const Footer = () => {
           </Box>
           <Box sx={{ display: "flex", flexDirection: "column", gap: "13px" }}>
             <Link
-              sx={{ fontSize: "14px", textDecoration: "none", color: "white" }}
+              style={{
+                fontSize: "14px",
+                textDecoration: "none",
+                color: "white",
+              }}
+              to={"/Product"}
             >
               Products
             </Link>
             <Link
-              sx={{ fontSize: "14px", textDecoration: "none", color: "white" }}
+              to={"/service"}
+              style={{
+                fontSize: "14px",
+                textDecoration: "none",
+                color: "white",
+              }}
             >
               Services
             </Link>
             <Link
-              sx={{ fontSize: "14px", textDecoration: "none", color: "white" }}
+              to={"/places-spaces"}
+              style={{
+                fontSize: "14px",
+                textDecoration: "none",
+                color: "white",
+              }}
             >
               Places
             </Link>
             <Link
-              sx={{ fontSize: "14px", textDecoration: "none", color: "white" }}
+              to={"/communities"}
+              style={{
+                fontSize: "14px",
+                textDecoration: "none",
+                color: "white",
+              }}
             >
               Communities
             </Link>
@@ -116,34 +137,61 @@ const Footer = () => {
           </Box>
           <Box sx={{ display: "flex", flexDirection: "column", gap: "13px" }}>
             <Link
-              sx={{ fontSize: "14px", textDecoration: "none", color: "white" }}
+              to={"/what-is-wibhoo"}
+              style={{
+                fontSize: "14px",
+                textDecoration: "none",
+                color: "white",
+              }}
             >
               Our Story
             </Link>
             <Link
-              sx={{ fontSize: "14px", textDecoration: "none", color: "white" }}
+              to={"/service"}
+              style={{
+                fontSize: "14px",
+                textDecoration: "none",
+                color: "white",
+              }}
             >
               Our Approach
             </Link>
           </Box>
         </Box>
-        <Box sx={{ gap: "15px", display: "flex", flexDirection: "column" }}>
-          <Box sx={{ fontSize: "18px", fontWeight: "600", color: "white" }}>
+        <Box style={{ gap: "15px", display: "flex", flexDirection: "column" }}>
+          <Box style={{ fontSize: "18px", fontWeight: "600", color: "white" }}>
             Support
           </Box>
-          <Box sx={{ display: "flex", flexDirection: "column", gap: "13px" }}>
+          <Box
+            style={{ display: "flex", flexDirection: "column", gap: "13px" }}
+          >
             <Link
-              sx={{ fontSize: "14px", textDecoration: "none", color: "white" }}
+              to={"/terms"}
+              style={{
+                fontSize: "14px",
+                textDecoration: "none",
+                color: "white",
+              }}
             >
               Terms of Service
             </Link>
             <Link
-              sx={{ fontSize: "14px", textDecoration: "none", color: "white" }}
+              to={"/shipping"}
+              style={{
+                fontSize: "14px",
+                textDecoration: "none",
+                color: "white",
+              }}
             >
               Shipping & Return
             </Link>
             <Link
-              sx={{ fontSize: "14px", textDecoration: "none", color: "white" }}
+              to={"/privacy"}
+              style={{
+                fontSize: "14px",
+                textDecoration: "none",
+                color: "white",
+              }}
             >
               Privacy
             </Link>

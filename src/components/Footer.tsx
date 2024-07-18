@@ -92,9 +92,10 @@ const Footer = () => {
             <Link
               style={{
                 fontSize: "14px",
-                textDecoration: "none",
+
                 color: "white",
               }}
+              className="FooterPagesHover"
               to={"/Product"}
             >
               Products
@@ -103,9 +104,10 @@ const Footer = () => {
               to={"/service"}
               style={{
                 fontSize: "14px",
-                textDecoration: "none",
+
                 color: "white",
               }}
+              className="FooterPagesHover"
             >
               Services
             </Link>
@@ -113,9 +115,10 @@ const Footer = () => {
               to={"/places-spaces"}
               style={{
                 fontSize: "14px",
-                textDecoration: "none",
+
                 color: "white",
               }}
+              className="FooterPagesHover"
             >
               Places
             </Link>
@@ -123,9 +126,10 @@ const Footer = () => {
               to={"/communities"}
               style={{
                 fontSize: "14px",
-                textDecoration: "none",
+
                 color: "white",
               }}
+              className="FooterPagesHover"
             >
               Communities
             </Link>
@@ -140,19 +144,20 @@ const Footer = () => {
               to={"/what-is-wibhoo"}
               style={{
                 fontSize: "14px",
-                textDecoration: "none",
                 color: "white",
               }}
+              className="FooterPagesHover"
             >
               Our Story
             </Link>
             <Link
-              to={"/service"}
+              to={"/how-we-onboard"}
               style={{
                 fontSize: "14px",
-                textDecoration: "none",
+
                 color: "white",
               }}
+              className="FooterPagesHover"
             >
               Our Approach
             </Link>
@@ -169,9 +174,10 @@ const Footer = () => {
               to={"/terms"}
               style={{
                 fontSize: "14px",
-                textDecoration: "none",
+
                 color: "white",
               }}
+              className="FooterPagesHover"
             >
               Terms of Service
             </Link>
@@ -179,9 +185,10 @@ const Footer = () => {
               to={"/shipping"}
               style={{
                 fontSize: "14px",
-                textDecoration: "none",
+
                 color: "white",
               }}
+              className="FooterPagesHover"
             >
               Shipping & Return
             </Link>
@@ -189,9 +196,10 @@ const Footer = () => {
               to={"/privacy"}
               style={{
                 fontSize: "14px",
-                textDecoration: "none",
+
                 color: "white",
               }}
+              className="FooterPagesHover"
             >
               Privacy
             </Link>

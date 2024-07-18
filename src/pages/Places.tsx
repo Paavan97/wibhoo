@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Banner from '../views/places/Banner'
 import { Box } from '@mui/material'
 import ExplorePlaces from '../views/places/ExplorePlaces'
@@ -6,6 +6,9 @@ import Products from '../views/places/Products'
 import PosterCrousel from './PosterCrousel'
 
 const Places:React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Box  sx={{
       display: 'flex',

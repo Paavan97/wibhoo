@@ -1,9 +1,12 @@
 import { Box, Typography } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import OutlinedTimeline from "../views/whatIsWibhoo/TimeLine";
 import GoalsImageGrid from "../views/whatIsWibhoo/GoalAlignment";
 
 const WhatIsWibhoo: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <Box
       sx={{
@@ -12,6 +15,7 @@ const WhatIsWibhoo: React.FC = () => {
         width: "100%",
         justifyContent: "center",
         alignItems: "center",
+        textAlign: "justify",
       }}
     >
       <Box
@@ -20,37 +24,32 @@ const WhatIsWibhoo: React.FC = () => {
           flexDirection: "column",
           width: "90%",
           padding: "20px",
-          backgroundColor: "#111917",
           color: "white",
           borderRadius: "20px",
           gap: "30px",
-          boxShadow:
-            "rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;",
         }}
       >
         <Typography
+          variant="h4"
           sx={{
-            fontSize: '35px',
-            fontWeight: "700",
             color: "#8FE1AA",
-            marginY: {xs:'20px',md:"30px"},
+            marginY: { xs: "20px", md: "30px" },
           }}
         >
           Our Story
         </Typography>
 
-        <Box sx={{ marginTop: {xs:'0',md:"50px"} }}>
+        <Box sx={{ marginTop: "10px" }}>
           <Typography
+            variant="h4"
             sx={{
-              fontSize: "28px",
-              fontWeight: "600",
               marginBottom: "10px",
               color: "#8FE1AA",
             }}
           >
             What is Wibhoo?
           </Typography>
-          <Typography sx={{ fontSize: {xs:"16px",md:"28px"}, lineHeight: "2" }}>
+          <Typography variant="h6" sx={{ lineHeight: "2" }}>
             Wibhoo is your gateway to effortless conscious living. We've curated
             a diverse ecosystem where sustainability meets convenience, offering
             everything you need to embrace a mindful lifestyle. From
@@ -64,16 +63,15 @@ const WhatIsWibhoo: React.FC = () => {
         </Box>
         <Box sx={{ marginTop: "30px" }}>
           <Typography
+            variant="h4"
             sx={{
-              fontSize: "28px",
-              fontWeight: "600",
               marginBottom: "10px",
               color: "#8FE1AA",
             }}
           >
             How do we see the world after Wibhoo ?
           </Typography>
-          <Typography sx={{ fontSize: {xs:"16px",md:"28px"}, lineHeight: "2" }}>
+          <Typography variant="h6" sx={{ lineHeight: "2" }}>
             Our vision at Wibhoo is to create a world where conscious living is
             not just a choice, but a way of life embraced by all. We envision a
             future where sustainability is seamlessly integrated into every
@@ -97,13 +95,12 @@ const WhatIsWibhoo: React.FC = () => {
           width: "100%",
           justifyContent: "center",
           alignItems: "center",
-          textAlign:'center'
+          textAlign: "center",
         }}
       >
         <Typography
+          variant="h4"
           sx={{
-            fontSize: {xs:'32px',md:"35px"},
-            fontWeight: "700",
             color: "#8FE1AA",
             marginTop: "48px",
           }}
@@ -111,10 +108,10 @@ const WhatIsWibhoo: React.FC = () => {
           Potential Impact in a Upcoming Year
         </Typography>
         <Typography
+          variant="h6"
           sx={{
-            width: {xs:'100%', md:"80%"},
+            width: { xs: "100%", md: "80%" },
             textAlign: "center",
-            fontSize: {xs:"16px",md:"28px"},
             lineHeight: "2",
           }}
         >
@@ -126,10 +123,10 @@ const WhatIsWibhoo: React.FC = () => {
 
         <hr style={{ width: "100%" }}></hr>
 
-        <Box sx={{marginTop:'50px'}}>
+        <Box sx={{ marginTop: "50px" }}>
           <Typography
             sx={{
-              fontSize: {xs:"20px", md:"32px"},
+              fontSize: { xs: "20px", md: "32px" },
               fontWeight: "600",
               marginBottom: "10px",
               color: "#8FE1AA",
@@ -141,7 +138,7 @@ const WhatIsWibhoo: React.FC = () => {
         </Box>
         {/* <Box>
         </Box> */}
-        <GoalsImageGrid/>
+        <GoalsImageGrid />
       </Box>
     </Box>
   );

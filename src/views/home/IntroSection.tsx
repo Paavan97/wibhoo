@@ -116,9 +116,7 @@ const IntroSection: React.FC = () => {
         <Typography sx={{ color: "#9cf5b8", fontSize: "3em" }}>
           Localizing Conscious Living
         </Typography>
-        <Typography
-          sx={{ color: "white", fontSize: "16px", fontWeight: "100" }}
-        >
+        <Typography variant="h6" sx={{ color: "white" }}>
           At Wibhoo, we prioritize making conscious living easy and accessible
           by emphasizing local solutions. This not only helps boost the local
           economy but also reduces negative environmental impacts.
@@ -152,9 +150,7 @@ const IntroSection: React.FC = () => {
         <Typography sx={{ color: "#9cf5b8", fontSize: "3em" }}>
           Explore the ways
         </Typography>
-        <Typography
-          sx={{ color: "white", fontSize: "16px", fontWeight: "100" }}
-        >
+        <Typography variant="h6" sx={{ color: "white" }}>
           Explore Planet-Friendly Choices, Practical Services, Beautiful
           Getaways, and Collaborative Networks
         </Typography>

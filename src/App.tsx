@@ -16,6 +16,9 @@ import Shippping from "./pages/Support/Shipping";
 import Privacy from "./pages/Support/Privacy";
 import HowWeOnboard from "./pages/HowWeOnboard";
 import OurApproach from "./pages/OurApproach";
+import Protectedroutes from "./routes/ProtectedRoutes";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 function App() {
   return (
@@ -37,9 +40,13 @@ function App() {
             <Route path="/Product/:category" element={<ProductPage />} />
             <Route path="terms" element={<Terms />} />
             <Route path="shipping" element={<Shippping />} />
-            <Route path="privacy" element={<Privacy />} />
             <Route path="how-we-onboard" element={<HowWeOnboard />} />
+            <Route path='*' element={<Protectedroutes/>} >
+              <Route path="privacy" element={<Privacy />} />
+            </Route>
           </Route>
+            <Route path="/login" element={<Login/>} />  
+            <Route path="/register" element={<Register/>} />  
         </Routes>
       </BrowserRouter>
     </>

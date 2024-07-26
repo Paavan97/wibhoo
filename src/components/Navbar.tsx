@@ -26,7 +26,7 @@ import {
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -71,6 +71,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Navbar: React.FC = () => {
   const isTablet = useMediaQuery("(max-width:1113px)");
+  const navigate = useNavigate();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [searchBarOpen, setSearchBarOpen] = useState(false); // State for search bar visibility
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -155,6 +156,14 @@ const Navbar: React.FC = () => {
       ],
     },
   ];
+
+  const handleLogout = () => {
+    localStorage.clear();
+    const keys = Object.keys(localStorage);
+    if (keys.length === 0) {
+      navigate("/login");
+    }
+  };
 
   return (
     <Box sx={{ width: "100%" }}>
@@ -324,6 +333,9 @@ const Navbar: React.FC = () => {
                       </ListItemAvatar>
                       <ListItemText />
                     </ListItemButton>
+                    <Button color="inherit" onClick={handleLogout}>
+                      Logout
+                    </Button>
                   </Box>
                 </Box>
               ) : (
@@ -455,6 +467,9 @@ const Navbar: React.FC = () => {
                 )}
               </React.Fragment>
             ))}
+            <ListItemButton onClick={handleLogout}>
+              <ListItemText primary="Logout" />
+            </ListItemButton>
           </List>
         </Box>
       </Drawer>

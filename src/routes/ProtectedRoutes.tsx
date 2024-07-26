@@ -1,14 +1,15 @@
-import React from "react"
-import {useCookies} from "react-cookie"
-import { Navigate, Outlet } from "react-router-dom";
+import React, { ReactNode } from "react";
+import { Navigate } from "react-router-dom";
 
-const Protectedroutes : React.FC = () => {
-    const [cookies] = useCookies(["token"]);
-    console.log("--->cookies->",cookies.token)
-    return (
-        <>
-          { cookies.token !== undefined ? <Outlet/> : <Navigate to="/login" replace={true}/> }
-        </>
-    )
+interface ProtectedRoutesProps {
+  children: ReactNode;
 }
-export default Protectedroutes;
+
+const ProtectedRoutes: React.FC<ProtectedRoutesProps> = ({ children }) => {
+  // Check if token exists in localStorage
+  const token = localStorage.getItem("token");
+
+  return <>{token ? children : <Navigate to="/login" replace={true} />}</>;
+};
+
+export default ProtectedRoutes;

@@ -122,37 +122,40 @@ const Navbar: React.FC = () => {
   };
 
   const menuItems = [
-    { text: "Home", path: "home" },
+    { text: "Home", path: "/" },
     {
       text: "Shop",
       subMenu: [
-        { text: "Home & Living", path: "products/home-living" },
-        { text: "Fashion & Clothing", path: "products/fashion-clothing" },
-        { text: "Beauty & Care", path: "products/beauty-care" },
-        { text: "Eat & Drink", path: "products/eat-drink" },
-        { text: "Lifestyle Essentials", path: "products/lifestyle-essentials" },
+        { text: "Home & Living", path: "/products/home-living" },
+        { text: "Fashion & Clothing", path: "/products/fashion-clothing" },
+        { text: "Beauty & Care", path: "/products/beauty-care" },
+        { text: "Eat & Drink", path: "/products/eat-drink" },
+        {
+          text: "Lifestyle Essentials",
+          path: "/products/lifestyle-essentials",
+        },
       ],
     },
     {
       text: "Use",
       subMenu: [
-        { text: "Wellbeing & Care", path: "use/wellbeing-care" },
-        { text: "Eco-Tourism", path: "use/eco-tourism" },
-        { text: "Waste Management", path: "use/waste-management" },
-        { text: "Home & Garden", path: "use/home-garden" },
-        { text: "Event Planning", path: "use/event-planning" },
-        { text: "Building & Architecture", path: "use/building-architecture" },
-        { text: "Transport & Logistic", path: "use/transport-logistic" },
-        { text: "Green Energy & Audits", path: "use/green-energy-audits" },
+        { text: "Wellbeing & Care", path: "/use/wellbeing-care" },
+        { text: "Eco-Tourism", path: "/use/eco-tourism" },
+        { text: "Waste Management", path: "/use/waste-management" },
+        { text: "Home & Garden", path: "/use/home-garden" },
+        { text: "Event Planning", path: "/use/event-planning" },
+        { text: "Building & Architecture", path: "/use/building-architecture" },
+        { text: "Transport & Logistic", path: "/use/transport-logistic" },
+        { text: "Green Energy & Audits", path: "/use/green-energy-audits" },
       ],
     },
-    { text: "Places", path: "places-spaces" },
-    { text: "Communities", path: "communities" },
+    { text: "Places", path: "/places-spaces" },
+    { text: "Communities", path: "/communities" },
     {
       text: "Our Story",
       subMenu: [
-        { text: "What Is Wibhoo", path: "what-is-wibhoo" },
-        { text: "How We Onboard", path: "how-we-onboard" },
+        { text: "What Is Wibhoo", path: "/what-is-wibhoo" },
+        { text: "How We Onboard", path: "/how-we-onboard" },
       ],
     },
   ];
@@ -281,7 +284,7 @@ const Navbar: React.FC = () => {
                                       }
                                     >
                                       <Link
-                                        to={`/${subItem.path}`}
+                                        to={subItem.path}
                                         style={{
                                           textDecoration: "none",
                                           color: "#fff",
@@ -456,7 +459,7 @@ const Navbar: React.FC = () => {
                           key={subItem.text}
                           button
                           component={Link}
-                          to={`/${subItem.path}`}
+                          to={subItem.path}
                           sx={{ pl: 4 }}
                         >
                           <ListItemText primary={subItem.text} />
@@ -467,9 +470,32 @@ const Navbar: React.FC = () => {
                 )}
               </React.Fragment>
             ))}
-            <ListItemButton onClick={handleLogout}>
-              <ListItemText primary="Logout" />
-            </ListItemButton>
+            <Box sx={{ marginTop: "50px" }}>
+              <ListItemButton
+                sx={{
+                  margin: "auto",
+                  textAlign: "center",
+                  display: "flex",
+                  alignItems: "center",
+                  borderRadius: "20px",
+                  justifyContent: "center",
+                  height: "40px",
+                  backgroundColor: "rgb(68, 222, 125)",
+                  "&:hover": {
+                    backgroundColor: "#4CBB17",
+                  },
+                  width: "70%",
+                }}
+                onClick={handleLogout}
+              >
+                {/* <Typography
+                sx={{ height: "100%", display: "flex", alignItems: "center" }}
+                // primary="Logout"
+              > */}
+                Logout
+                {/* </Typography> */}
+              </ListItemButton>
+            </Box>
           </List>
         </Box>
       </Drawer>

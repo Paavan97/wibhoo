@@ -27,7 +27,7 @@ const Login = () => {
           localStorage.setItem("token", token);
           navigate("/");
         } else {
-          toast.error("Login failed. Please check your credentials  1234.");
+          toast.error("Login failed. Please check your credentials.");
         }
       }
     );
